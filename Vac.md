@@ -213,6 +213,51 @@ PS > ls -r C:\ -File *.txt | % {Select-String -Path $_ -Pattern pass*}
 
 Modules
 ```
+# List of Imported Modules
+PS > Get-Module
+PS > Get-Module -ListAvailable
+
+# Import Module
+PS > Import-Module .\script.psm1
+
+# PowerSploit
+https://github.com/PowerShellMafia/PowerSploit
+
+PS > Improt-Module PowerSploit             # Import Module
+PS > Get-Module                            # Check
+PS > Get-Command -Module Powersploit # List All Available Commands of PowerSplloit
+
+
+PS > Get-Help Invoke-PrivescAudit       # Help on cmdlet
+PS > Get-Help Wrtie-HijackDll           # Help on cmdlet
+
 
 ```
+
+[Writing a Windows PowerShell Module
+](https://learn.microsoft.com/en-us/powershell/scripting/developer/module/writing-a-windows-powershell-module?view=powershell-7.3&viewFallbackFrom=powershell-7)
+
+
+
+Scripts
+```
+# Script which takes an Argument and list files
+Param(
+    [Parameter(mandatory=$true)][string]$file
+)
+Get-Content "$file"
+
+# Alternate of code above
+PS > $file = "script.txt"
+PS > Get-Content $file
+
+# Foreach Loop
+PS > $services = Get-Service
+PS > ForEach-Object ($service in $services) { $service.Name }
+```
+
+
+
+
+
 
