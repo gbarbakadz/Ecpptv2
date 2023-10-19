@@ -82,3 +82,9 @@ NOTE : Upon Deauthentication of the client, the client should auto-reconnect to 
 ```
 
 
+
+
+# Ruby & Metasploit
+
+#### Instalation / Fundamentals
+
