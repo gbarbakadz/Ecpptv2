@@ -87,4 +87,124 @@ NOTE : Upon Deauthentication of the client, the client should auto-reconnect to 
 # Ruby & Metasploit
 
 #### Instalation / Fundamentals
+```
+# Installation
+$ sudo apt-get install <ruby_version>        # Linux
+$ brew install ruby                          # MacOS
+
+# https://www.ruby-lang.org/en/documentation/ruby-from-other-languages/
+
+-----------------------------------------------------------------------------
+
+$ ruby hello.rb             # Ruby from a File
+$ ruby -e " puts 'Hello"    # Ruby from Command Line
+$ irb                       # Interactive Ruby
+
+#!/usr/bin/ruby             # shebang
+
+-----------------------------------------------------------------------------
+
+# Ruby One-Liners
+$ ruby -ep 0 file.txt                            # Display content of file
+$ ruby -ne 'END {print "Lines:",$.,"\n"}' file   # Display Number of Lines
+$ ruby -i -pe 'gsub "foo","FOO"' file            # Change foo to FOO
+
+
+------------------------------------------------------------------------------
+
+# Librarys
+$ gem list                 # Local Librarys
+$ gem install [Library]    # Install Library
+$ gem install pry          # Install pry library
+
+-------------------------------------------------------------------------------
+```
+
+Interegers
+```ruby
+puts 2+2
+puts 3.+3
+puts 4.4+5
+
+puts 4.odd?
+puts 4.even?
+puts 4.next
+puts 4.pred
+
+puts 25.to_s
+puts 65.chr
+
+```
+
+**Strings**
+```ruby
+
+# Quotes
+puts %[Hello "World"]
+puts %Q[Hello "World"]
+puts %q[Hello "World"]
+
+
+# Info about strings
+st = "myString"
+st.empty?
+st.frozen?
+st.clear
+st.lenght
+st.size
+st.start_with? "my"
+st.end_with? "ing"
+
+
+
+# Heredoc
+st = <<END 
+and it Heredoc
+Script and
+awesome
+END
+puts st
+
+
+
+# String Arithmetics
+st = "MyString is Perl"
+st << "NotMyString"
+st * 5
+st[Perl] = "Ruby"
+st[0] = "m"
+st[0..5] = "MyAbs"
+st[0..5] = "M"
+
+
+st.sub("Perl","Ruby")
+st.gsub("Perl","Ruby")
+st.sub!("Perl","Ruby")
+st.gsub!("Perl","Ruby")
+
+st.insert(0,"m")
+st.insert(-2,"M")
+st.insert(st.size,"World")
+
+
+
+# Interpolation
+puts "My name is #{Ruby Code}"
+puts %[My name is #{Ruby Code}]
+
+
+# Some Useful Method
+st = "Mystring"
+st.upcase
+st.downcase
+st.capitalize
+st.reverse
+st.chop
+```
+
+
+**Arrays**
+```ruby
+
+```
 
