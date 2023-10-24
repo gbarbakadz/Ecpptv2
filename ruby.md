@@ -918,3 +918,216 @@ end
 ```
 
 
+## Pentesters Prerequisites
+
+#### **Regex**
+
+```ruby
+
+st = "Mystring is a stringA"
+st =~ /Mystring/              # Regex Match
+st =~ %r(Mystring)            # Regex Match
+st =~ /Mystring/i             # Case Insensitive Match
+
+
+/Mystring/.match(st)          # Regex Match
+/mystring/i.matchst)         # Regex Match
+
+matching = /Mystring/.match(st)           # Regex Match
+matching = /Mystring/i.match(st)          # Regex Match
+matching[0]
+
+st" =~ /\(/              # Regex Match find (
+st" =~ /\)/              # Regex Match find )
+st =~ /\|/               # Regex Match find |
+
+
+st =~ /[0-9]/            # digit
+st =~ /[\d]/             # digit
+st =~ /[\D]/             # no digit
+st =~ /[\w]/             # word
+st =~ /[\W]/             # no word
+st =~ /[\s]/             # space
+st =~ /[\S]/             # no space
+
+
+"Code: 4B" =~ /\d[A-Z]/               # prints 6, match 4B
+
+st =~ /strex|string/i                 # Alternatives
+st =~ /strin(g|n)/                    # alternatives
+
+st =~ /string{2}/                     # Occurance twice
+st =~ /^Mystring/                     # Start with "Mystring"
+st =~ /string$/                       # end with "string"
+
+
+ip = /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/.match("This is my ip 192.168.10.1")  # Regex IP
+ip[0]                                                                       # get IP
+
+
+```
+
+**Global Variables**
+```ruby
+
+string = "This is my ip 192.168.10.1"
+string =~ /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/
+$~                                          # matchdata object
+$&                                          # prints searched string (192.168.10.1)
+$1                                          # prints word after space
+$2                                          # so on...
+$~.to_s                                     # to string
+```
+
+**Working with Strings**
+```ruby
+
+text = "abcd 192.168.10.1 this is my ip 192.168.20.110"
+pattern = /\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}/
+
+text.scan(pattern) { |x| puts x}                 # prints all ip
+
+```
+
+#### Time
+
+**Time**
+```ruby
+
+Time.now                    # Current time
+Time.now.utc                # Currnet time in UTC
+
+t = Time.local(2014,1,13,11,50)         # Set new time
+t.year
+t.month
+t.day
+
+```
+
+
+
+#### Files and Directories
+
+**Directories**
+```ruby
+
+Dir.pwd                  # Current directory
+Dir.getwd                # Current directory
+Dir.home("user")         # Home directory of user
+
+# Change Directory
+Dir.chdir("/tmp")
+Dir.chdir("..")
+
+Dir.chdir("/tmp") do
+	puts Dir.pwd
+	Code Here
+end
+
+
+# Create/Delete Directory
+Dir.mkdir("test")                  # Create
+Dir.unlink("test")                 # Delete
+
+
+# Directory Listing
+Dir.entries(".")
+Dir["*.rb]
+
+Dir.foreach(".") do |file|
+	puts file
+end
+
+
+# Existence
+Dir.exist? "/tmp"
+
+```
+
+
+**Real World - Check if Application Exist**
+```ruby
+#!/usr/bin/ruby
+
+directories = [
+'C:\\Program FIles\\',
+'C:\\Program FIles (x86)\\',
+'C:\\'
+]
+
+installed = false
+
+for dir in directories do
+  dir = dir + ARGV[0]
+  if Dir.exist? dir
+    installed = true
+    puts %Q! Exist : #{dir}!
+    puts "\nListing"
+    Dir.foreach(".") { |x| puts x }
+  end
+end
+
+```
+
+
+**Files**
+
+```ruby
+
+File.exist? "example.txt"            # Existence
+File.size? "example.txt"             # Size
+File.file? "example.txt"             # Check file
+File.directory? "exampledir"         # Check Directory
+File.ftype? "example.txt"            # Prints file type
+
+File.readable? "exmaple.txt"         # Check readable permission
+File.writable? "example.txt"         # Check writable permission
+File.executable? "example.txt"       # Check executable permission
+
+File.mtime "example.txt"             # Check last modification time
+File.atime "example.txt"             # Check last access time
+File.ctime "example.txt"             # Creation time
+
+st = File.stat "example.txt"
+st.size
+st.mtime
+st.ctime
+...
+
+
+**Names**
+
+```ruby
+
+path = "/home/user/flag.txt"
+
+File.basename path                    # return flag.txt
+File.basename(path, ".txt")           # return flag
+
+File.dirname path                     # return /home/user
+File.extname path	              # return .txt
+File.split path                       # return ["/home/user/","flag.txt"]
+File.expand_path("~Desktop")          # return /home/user/Desktop
+
+```
+
+**Creation/Deletion/Renaming**
+
+```ruby
+
+File.open("newfile.txt","w")          # Create file
+File.new("newfile.txt","w")           # Create file
+
+File.rename("file.txt","renamedfile.txt")          # rename file
+
+File.delete("file.txt")          # Delete file
+File.unlink("file.txt")          # Delete file
+
+File.chmod(0777, "file.txt")          # Change permission file
+
+```
+
+
+
+
+## Input Output
